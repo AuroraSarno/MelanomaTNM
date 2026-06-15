@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Melanoma TNM</string>
+    <string name="benvenuto">Benvenuto, dottore</string>
+    <string name="btn_calcolaHome">Calcola nuovo stadio</string>
+    <string name="label_breslow">Breslow (mm)</string>
+    <string name="label_ulcerazione">Ulcerazioni</string>
+    <string name="label_linfonodi">Linfonodi</string>
+    <string name="label_metastasi">Metastasi</string>
+    <string name="btn_calcolaStadio">Calcola stadio</string>
+</resources>
