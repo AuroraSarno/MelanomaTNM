@@ -6,7 +6,7 @@ import androidx.compose.ui.graphics.Color
 val bianco = Color(0xFFFFFFFF)
 
 //palette di colori per modalità giorno
-val rosaGiorno = Color(0xFFC27863)
+val rosaGiorno = Color(0xFFBA7F6E)
 val beigeBottoniGiorno = Color(0xFFEEDCBE)
 val marroneGiorno = Color(0xFF3E2723)
 val cremaCardGiorno = Color(0xFFFFF9E6)
