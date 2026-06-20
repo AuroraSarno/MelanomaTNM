@@ -1,6 +1,5 @@
 package com.example.melanomatnm.schermate
 
-import androidx.compose.foundation.Image
 import com.example.melanomatnm.R
 import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.background
@@ -17,18 +16,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.unit.sp
 import com.example.melanomatnm.componenti.Bottone
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.melanomatnm.componenti.Spazio
+import com.example.melanomatnm.componenti.MenuATendinaLingua
 import com.example.melanomatnm.ui.theme.MelanomaTNMTheme
 
 @Composable
@@ -65,14 +60,10 @@ fun SchermataHome(
 
         }
         Column(
-            modifier = Modifier.fillMaxSize().verticalScroll(StatoSchermata),
+            //align permette di tenere al centro questa colonna
+            modifier = Modifier.align(Alignment.Center).verticalScroll(StatoSchermata),
             horizontalAlignment = Alignment.CenterHorizontally,
         ){
-
-            //uno spazio tra il buongiorno e il bottone
-            //se giro lo schermo probabilmente finisce troppo in basso
-            Spazio(modifier = Modifier.height(350.dp))
-
             //bottone centrale
             Bottone(text=stringResource(R.string.btn_calcolaHome), onClick = NavigazioneACalcolatore, modifier=Modifier.width(270.dp))
 
@@ -83,26 +74,16 @@ fun SchermataHome(
             modifier= Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(24.dp),
             horizontalArrangement = Arrangement.SpaceBetween //in questo modo le 2 icone sono sperata da uno spazio centrale e rimangono ai 2 angoli
         ){
-            IconButton(
-                onClick = NavigazioneACalcolatore,
-                modifier = Modifier.background(MaterialTheme.colorScheme.surfaceVariant, CircleShape)
-            ){
-                Icon(
-                    imageVector = Icons.Filled.Language,
-                    contentDescription = "Cambia lingua",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+           MenuATendinaLingua()
 
-            // Icona Giorno/Notte (Cerchio)
             IconButton(
-                onClick = { isDarkMode = !isDarkMode }, // Inverte la modalità al click!
-                modifier = Modifier.background(MaterialTheme.colorScheme.surfaceVariant, CircleShape)
+                onClick = { isDarkMode = !isDarkMode }, // Inverte la modalità al click
+                modifier = Modifier.background(MaterialTheme.colorScheme.primary, CircleShape)
             ) {
                Icon(
                    imageVector = if(isDarkMode) Icons.Filled.DarkMode else Icons.Filled.LightMode,
                    contentDescription = "Modalità giorno/notte",
-                   tint = MaterialTheme.colorScheme.onSurfaceVariant
+                   tint = MaterialTheme.colorScheme.onPrimary
                )
             }
             }

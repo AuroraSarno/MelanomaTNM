@@ -8,4 +8,8 @@
     <string name="label_linfonodi">Linfonodi</string>
     <string name="label_metastasi">Metastasi</string>
     <string name="btn_calcolaStadio">Calcola stadio</string>
+    <string name="italiano">Italiano</string>
+    <string name="inglese">Inglese</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
 </resources>
