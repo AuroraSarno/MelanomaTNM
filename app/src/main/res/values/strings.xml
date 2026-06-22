@@ -11,4 +11,12 @@
     <string name="inglese">English</string>
     <string name="si">Yes</string>
     <string name="no">No</string>
+    <string name="seleziona">Select</string>
+    <string name="erroreBreslow">Invalid number entered (example of valid number: 1.2)</string>
+    <string name="erroreLinfonodi">Invalid number entered, please enter an integer (example: 1)</string>
+    <string name="erroreOpzioni">Select an option</string>
+    <string name="categoriaT">Category T: </string>
+    <string name="categoriaN">Category N: </string>
+    <string name="categoriaM">Category M: </string>
+    <string name="stadioFinale">Melanoma stage: </string>
 </resources>

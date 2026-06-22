@@ -1,5 +1,6 @@
 package com.example.melanomatnm.schermate
 
+import com.example.melanomatnm.viewmodel.MelanomaViewModel
 import com.example.melanomatnm.R
 import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.background
@@ -26,14 +27,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.melanomatnm.componenti.MenuATendinaLingua
 import com.example.melanomatnm.ui.theme.MelanomaTNMTheme
 
+
 @Composable
 fun SchermataHome(
+    isDarkMode: Boolean,
+    onThemeToggle: () -> Unit,
     NavigazioneACalcolatore: () -> Unit
 ){
     //la funzione funge da memoria interna, permette di mantenere la schermata nel punto in cui era prima della rotazione
     val StatoSchermata = rememberScrollState()
-    //variabile per ricordarci se siamo in variabile notte o giorno
-    var isDarkMode by remember{ mutableStateOf(false) }
 
     Surface(modifier= Modifier.fillMaxSize()) {}
     Box(modifier = Modifier.fillMaxSize()){
@@ -77,7 +79,7 @@ fun SchermataHome(
            MenuATendinaLingua()
 
             IconButton(
-                onClick = { isDarkMode = !isDarkMode }, // Inverte la modalità al click
+                onClick = onThemeToggle, // Inverte la modalità al click, nella mainActiviy (così cambia ovunque)
                 modifier = Modifier.background(MaterialTheme.colorScheme.primary, CircleShape)
             ) {
                Icon(
@@ -91,7 +93,7 @@ fun SchermataHome(
     }
 
 
-//funzione per visualizzare la preview della schermata
+/*funzione per visualizzare la preview della schermata
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
@@ -100,4 +102,4 @@ fun HomeScreenPreview() {
     MelanomaTNMTheme() {
         SchermataHome(NavigazioneACalcolatore = {})
     }
-}
+}*/

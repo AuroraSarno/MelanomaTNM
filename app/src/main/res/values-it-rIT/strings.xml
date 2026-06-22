@@ -12,4 +12,12 @@
     <string name="inglese">Inglese</string>
     <string name="si">Si</string>
     <string name="no">No</string>
+    <string name="seleziona">Seleziona</string>
+    <string name="erroreBreslow">Numero inserito non valido (esempio di numero valido: 1.2) </string>
+    <string name="erroreLinfonodi">Numero inserito non valido, per favore inserire un numero intero</string>
+    <string name="erroreOpzioni">Seleziona un opzione</string>
+    <string name="categoriaT">Categoria T: </string>
+    <string name="categoriaN">Categoria N: </string>
+    <string name="categoriaM">Categoria M: </string>
+    <string name="stadioFinale">Stadio melanoma: </string>
 </resources>

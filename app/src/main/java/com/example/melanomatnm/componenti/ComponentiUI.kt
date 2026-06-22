@@ -1,6 +1,7 @@
 package com.example.melanomatnm.componenti
 
-import androidx.annotation.experimental.Experimental
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -20,7 +21,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 
@@ -42,12 +45,12 @@ fun Bottone(text: String, onClick: ()-> Unit, modifier: Modifier =Modifier){
 }
 
 @Composable
-fun Titoli(text: String, modifier: Modifier = Modifier){
+fun TestoCard(text: String, modifier: Modifier = Modifier){
     Text(
         text = text,
-        style = MaterialTheme.typography.headlineMedium,
+        style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onBackground,
-        modifier = Modifier.padding(bottom = 24.dp)
+        //fontWeight = FontWeight.Bold
     )
 }
 
@@ -56,8 +59,11 @@ fun InputTesto(
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
+    testoErrore: String?,
+    onFocusPerso: () -> Unit,
     modifier: Modifier = Modifier
 ){
+    var giaFocalizzato by remember{mutableStateOf(false)}
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
@@ -66,7 +72,17 @@ fun InputTesto(
             style= MaterialTheme.typography.titleMedium,
             color= MaterialTheme.colorScheme.onPrimary)
                 },
-        modifier =modifier.fillMaxWidth(),
+        isError= testoErrore!=null,
+        supportingText = {if(testoErrore!=null){Text(text=testoErrore, color=MaterialTheme.colorScheme.error)}},
+        modifier =modifier
+            .fillMaxWidth()
+            .onFocusChanged{
+                if(it.isFocused){
+                    giaFocalizzato = true
+                }else if(!it.isFocused) {
+                    onFocusPerso()
+                    giaFocalizzato=false
+                }},
         shape =RoundedCornerShape(12.dp)
     )
 }
@@ -83,11 +99,16 @@ fun MenuSiNo(
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
+    testoErrore: String?,
     opzione1: String,
     opzione2: String,
+    onFocusPerso: () -> Unit,
     modifier: Modifier = Modifier
 ){
+    //per evitare che l'errore venga mostrato prima ancora che iniziamo a digitare qualcosa
+    var giaFocalizzato by remember { mutableStateOf(false) }
     var expanded by remember {mutableStateOf(false)}
+    val focusManager = LocalFocusManager.current
 
     Box(modifier = modifier.width(200.dp)){
         OutlinedTextField(
@@ -96,14 +117,26 @@ fun MenuSiNo(
             readOnly = true, //non fa aprire la tastiera
             label= {Text(label, style= MaterialTheme.typography.titleMedium,
                 color= MaterialTheme.colorScheme.onPrimary)},
-            modifier = Modifier.width(200.dp),
+            isError= testoErrore != null,
+            supportingText = {if(testoErrore != null){Text(text=testoErrore, color=MaterialTheme.colorScheme.error)} },
+            modifier = Modifier
+                .width(200.dp)
+                .onFocusChanged{
+                    if(it.isFocused){
+                        giaFocalizzato=true
+                    }else if(!it.isFocused && giaFocalizzato)
+                               onFocusPerso()
+                               giaFocalizzato=false //resetto per la prossima volta
+                               },
             shape =RoundedCornerShape(12.dp)
         )
 
         //sovrappongo un box vuoto per evitare che si apra la tastiera, quando provo
         // a cliccare l'input testo clicco il box e apro il menu
         Box(
-            modifier = Modifier.matchParentSize().clickable{expanded = true}
+            modifier = Modifier.matchParentSize().clickable{
+                focusManager.clearFocus() //chiudo la tastiera se aperta
+                expanded = true}
         )
 
         DropdownMenu(
@@ -119,6 +152,7 @@ fun MenuSiNo(
                     expanded = false
                 }
             )
+            HorizontalDivider()
             DropdownMenuItem(
                 text = { Text(opzione2) },
                 onClick = {
@@ -154,11 +188,18 @@ fun MenuATendinaLingua(){
         ){
             DropdownMenuItem(
                 text = {Text("Italiano")},
-                onClick = {}
+                onClick = {
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("it"))
+                    expanded = false
+                }
             )
+            HorizontalDivider()
             DropdownMenuItem(
-                text = {Text("Inlgese")},
-                onClick = {}
+                text = {Text("English")},
+                onClick = {
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"))
+                    expanded = false
+                }
             )
         }
     }
