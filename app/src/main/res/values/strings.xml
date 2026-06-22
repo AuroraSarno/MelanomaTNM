@@ -19,4 +19,16 @@
     <string name="categoriaN">Category N: </string>
     <string name="categoriaM">Category M: </string>
     <string name="stadioFinale">Melanoma stage: </string>
+    <string name="followUp_0">Skin exam once a year for the rest of your life.
+    \nPerform a monthly self-examination to check for swollen lymph nodes.
+    \nImaging tests performed only if specific symptoms appear.</string>
+    <string name="followUp_IB_IIA">Skin exam once a year for the rest of your life.
+    \nPhysical exam to be performed every 6 to 12 months for the first 5 years, then once a year.
+    \nImaging tests performed only if specific symptoms appear.</string>
+    <string name="followUp_IIB_IIC_III">Skin exam once a year for the rest of your life.
+    \nPhysical exam every 3 to 6 months for the first 2 years, then every 3 to 12 months for the next 3 years.
+    \nRecommended imaging tests every 3 to 12 months, which may include chest X-ray, CT scan, PET/CT, and brain MRI.</string>
+    <string name="followUp_IV">Skin exam once a year for the rest of your life.
+    \nPhysical exam, blood tests, and scans every 3 to 6 months for the first 2 years, then every 3 to 12 months for the next 3 years.
+    \nRecommended imaging tests every 3 to 12 months, which may include chest X-ray, CT scan, PET/CT, and brain MRI.</string>
 </resources>

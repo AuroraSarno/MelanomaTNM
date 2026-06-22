@@ -45,12 +45,20 @@ fun Bottone(text: String, onClick: ()-> Unit, modifier: Modifier =Modifier){
 }
 
 @Composable
-fun TestoCard(text: String, modifier: Modifier = Modifier){
+fun TestoTitoliCard(text: String, modifier: Modifier = Modifier){
+    Text(
+        text = text,
+        style = MaterialTheme.typography.titleMedium,
+        color = MaterialTheme.colorScheme.onBackground
+    )
+}
+
+@Composable
+fun TestoCard(text: String, modifier: Modifier = Modifier) {
     Text(
         text = text,
         style = MaterialTheme.typography.bodyMedium,
-        color = MaterialTheme.colorScheme.onBackground,
-        //fontWeight = FontWeight.Bold
+        color = MaterialTheme.colorScheme.onBackground
     )
 }
 

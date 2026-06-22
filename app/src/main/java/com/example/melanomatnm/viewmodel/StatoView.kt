@@ -16,6 +16,7 @@ data class StatoView(
     val categoriaM: CategoriaM? = null,
     val categoriaN: CategoriaN? = null,
     val stadioFinale: StadioFinale? = null,
+    val followUp: Int? = null,
     //gestione errori, salviamo gli id delle string in modo che la traduzione possa avvenire nella view
     val erroreBreslow: Int? = null,
     val erroreLinfonodi: Int? = null,

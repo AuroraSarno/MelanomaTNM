@@ -8,6 +8,7 @@ import com.example.melanomatnm.calcolatore.calcolaCategoriaM
 import com.example.melanomatnm.calcolatore.calcolaCategoriaN
 import com.example.melanomatnm.calcolatore.calcolaCategoriaT
 import com.example.melanomatnm.calcolatore.calcolaStadio
+import com.example.melanomatnm.modello.StadioFinale
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -98,7 +99,16 @@ class MelanomaViewModel: ViewModel() {
             val N = calcolaCategoriaN(linfonodi)
             val M = calcolaCategoriaM(metastasi)
             val stadio = calcolaStadio(T,N,M)
-            statoView.update { it.copy(categoriaT = T, categoriaN = N, categoriaM = M, stadioFinale = stadio) }
+            val followUp = calcolaFollowUp(stadio)
+            statoView.update { it.copy(categoriaT = T, categoriaN = N, categoriaM = M, stadioFinale = stadio, followUp = followUp) }
+        }
+    }
+    fun calcolaFollowUp(stadio: StadioFinale): Int?{
+        return when (stadio) {
+            StadioFinale.O, StadioFinale.IA -> R.string.followUp_0
+            StadioFinale.IB, StadioFinale.IIA -> R.string.followUp_IB_IIA
+            StadioFinale.IIB, StadioFinale.IIC, StadioFinale.III -> R.string.followUp_IIB_IIC_III
+            StadioFinale.IV -> R.string.followUp_IV
         }
     }
     fun chiudiRisultati(){

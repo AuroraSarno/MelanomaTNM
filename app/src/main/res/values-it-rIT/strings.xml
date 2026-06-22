@@ -20,4 +20,16 @@
     <string name="categoriaN">Categoria N: </string>
     <string name="categoriaM">Categoria M: </string>
     <string name="stadioFinale">Stadio melanoma: </string>
+    <string name="followUp_0">Esame della pelle una volta l\'anno per il resto della vita.
+        \nMensilmente eseguire in autonomia un esaminazione per la presenza di linfonodi.
+        \nEventuali esami di diagnostica per immagini eseguiti se compaiono sintomi specifici. </string>
+    <string name="followUp_IB_IIA">Esame della pelle una volta l\'anno per il resto della vita.
+        \nEsame fisico da eseguire ogni sei-dodici mesi per i primi 5 anni, poi una volta all\'anno.
+        \nEventuali esami di diagnostica per immagini eseguiti se compaiono sintomi specifici.</string>
+    <string name="followUp_IIB_IIC_III">Esame della pelle una volta l\'anno per il resto della vita.
+        \nEsame fisico da eseguire ogni tre-sei mesi per i primi due anni, per i successivi tre ogni tre-dodici mesi.
+        \nEsami di diagnostica per immagini eseguiti raccomandati ogni 3-12 mesi, possono includere esame del torace raggiX, TC, PET/TC e RM cerebrale</string>
+    <string name="followUp_IV">Esame della pelle una volta l\'anno per il resto della vita.
+        \nEsame fisico, analisi del sangue e scansioni da eseguire ogni tre-sei mesi per i primi due anni, per i successivi tre ogni tre-dodici mesi.
+        \nEsami di diagnostica per immagini eseguiti raccomandati ogni 3-12 mesi, possono includere esame del torace raggiX, TC, PET/TC e RM cerebrale</string>
 </resources>

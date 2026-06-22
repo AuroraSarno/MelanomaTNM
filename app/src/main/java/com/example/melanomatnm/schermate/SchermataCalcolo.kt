@@ -46,6 +46,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import com.example.melanomatnm.componenti.TestoCard
+import com.example.melanomatnm.componenti.TestoTitoliCard
 
 @Composable
 fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
@@ -167,6 +168,7 @@ fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
                     elevation = CardDefaults.cardElevation(defaultElevation = 12.dp)
                 ) {
                     Column(
+                        modifier = Modifier.padding(16.dp).verticalScroll(rememberScrollState()), //verticalScroll permette di scorrere se lo spazio non basta a tenere tutti i componenti
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
                         Row(
@@ -180,19 +182,23 @@ fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
                                 )
                             }
                         }
-                        TestoCard(" ${stringResource(R.string.categoriaT)} ${statoUI.categoriaT}")
+                        TestoTitoliCard(" ${stringResource(R.string.categoriaT)} ${statoUI.categoriaT}")
                         Spazio(modifier = Modifier.height(24.dp))
                         HorizontalDivider()
                         Spazio(modifier = Modifier.height(24.dp))
-                        TestoCard("${stringResource(R.string.categoriaN)} ${statoUI.categoriaN}")
+                        TestoTitoliCard("${stringResource(R.string.categoriaN)} ${statoUI.categoriaN}")
                         Spazio(modifier = Modifier.height(24.dp))
                         HorizontalDivider()
                         Spazio(modifier = Modifier.height(24.dp))
-                        TestoCard("${stringResource(R.string.categoriaM)} ${statoUI.categoriaM}")
+                        TestoTitoliCard("${stringResource(R.string.categoriaM)} ${statoUI.categoriaM}")
                         Spazio(modifier = Modifier.height(24.dp))
                         HorizontalDivider()
                         Spazio(modifier = Modifier.height(24.dp))
                         Text(text="${stringResource(R.string.stadioFinale)} ${statoUI.stadioFinale}",style=MaterialTheme.typography.titleLarge)
+                        Spazio(modifier = Modifier.height(24.dp))
+                        HorizontalDivider()
+                        Spazio(modifier = Modifier.height(24.dp))
+                        TestoCard("FollowUp: ${stringResource(statoUI.followUp!!)}")
                     }
                 }
             }

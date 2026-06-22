@@ -16,7 +16,8 @@ private val DarkColorScheme = darkColorScheme(
     background = sfondoNotte, //sfondo
     onBackground = bianco, //scritte libere
     surface = beigeCardNotte, //sfondo card
-    onSurface = bianco //scritte su card
+    onSurface = bianco, //scritte su card
+    error =rossoErrore
 )
 
 //schema colori modalità giorno
@@ -28,7 +29,8 @@ private val LightColorScheme = lightColorScheme(
     background = sfondoGiorno, //sfondo giorno
     onBackground = marroneGiorno, //scritte libere
     surface = cremaCardGiorno, //sfondo card
-    onSurface = marroneGiorno //scritte card
+    onSurface = marroneGiorno, //scritte card
+    error = rossoErrore
 )
 
 @Composable
