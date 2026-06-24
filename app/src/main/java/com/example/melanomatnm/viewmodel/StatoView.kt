@@ -6,13 +6,12 @@ import com.example.melanomatnm.modello.CategoriaT
 import com.example.melanomatnm.modello.StadioFinale
 
 data class StatoView(
-    //input utente
-    val breslow: String = "", //inputTesto parte da vuoto
-    val ulcerazioni: Boolean? = null, //costringe l'utente a scegliere uno dei 2 valori
+    val breslow: String = "",
+    val ulcerazioni: Boolean? = null,
     val metastasi: Boolean? = null,
     val linfonodi: String = "",
     //risultati
-    val categoriaT: CategoriaT? = null, //all'inizio non ci saranno calcoli, i risultati sono null
+    val categoriaT: CategoriaT? = null,
     val categoriaM: CategoriaM? = null,
     val categoriaN: CategoriaN? = null,
     val stadioFinale: StadioFinale? = null,

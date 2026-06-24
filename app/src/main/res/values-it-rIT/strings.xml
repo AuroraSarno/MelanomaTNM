@@ -3,10 +3,10 @@
     <string name="app_name">Melanoma TNM</string>
     <string name="benvenuto">Benvenuto, dottore</string>
     <string name="btn_calcolaHome">Calcola nuovo stadio</string>
-    <string name="label_breslow">Breslow (mm)</string>
-    <string name="label_ulcerazione">Ulcerazioni</string>
-    <string name="label_linfonodi">Linfonodi</string>
-    <string name="label_metastasi">Metastasi</string>
+    <string name="label_breslow">Indice di Breslow (mm)</string>
+    <string name="label_ulcerazione">Presenza di ulcerazioni</string>
+    <string name="label_linfonodi">Numero di linfonodi positivi</string>
+    <string name="label_metastasi">Presenza di metastasi</string>
     <string name="btn_calcolaStadio">Calcola stadio</string>
     <string name="italiano">Italiano</string>
     <string name="inglese">Inglese</string>

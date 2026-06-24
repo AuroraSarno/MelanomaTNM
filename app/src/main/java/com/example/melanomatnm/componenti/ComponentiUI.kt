@@ -25,11 +25,8 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+//Definisco le componenti generiche da usare nella UI per sfruttare il riuso del codice
 
-
-//vado a creare le componenti generiche da usare nella UI
-
-//bottone
 @Composable
 fun Bottone(text: String, onClick: ()-> Unit, modifier: Modifier =Modifier){
     Button(
@@ -43,7 +40,6 @@ fun Bottone(text: String, onClick: ()-> Unit, modifier: Modifier =Modifier){
         Text(text = text, style = MaterialTheme.typography.titleLarge)
     }
 }
-
 @Composable
 fun TestoTitoliCard(text: String, modifier: Modifier = Modifier){
     Text(
@@ -52,7 +48,6 @@ fun TestoTitoliCard(text: String, modifier: Modifier = Modifier){
         color = MaterialTheme.colorScheme.onBackground
     )
 }
-
 @Composable
 fun TestoCard(text: String, modifier: Modifier = Modifier) {
     Text(
@@ -61,7 +56,6 @@ fun TestoCard(text: String, modifier: Modifier = Modifier) {
         color = MaterialTheme.colorScheme.onBackground
     )
 }
-
 @Composable
 fun InputTesto(
     value: String,
@@ -71,6 +65,8 @@ fun InputTesto(
     onFocusPerso: () -> Unit,
     modifier: Modifier = Modifier
 ){
+    //Gestione del focus: se non l'utente non ha interagito con il componente
+    //evitiamo di mostrare l'errore
     var giaFocalizzato by remember{mutableStateOf(false)}
     OutlinedTextField(
         value = value,
@@ -94,14 +90,12 @@ fun InputTesto(
         shape =RoundedCornerShape(12.dp)
     )
 }
-
 @Composable
 fun Spazio(
     modifier: Modifier = Modifier
 ){
     Spacer(modifier.height(50.dp))
 }
-
 @Composable
 fun MenuSiNo(
     value: String,
@@ -113,7 +107,8 @@ fun MenuSiNo(
     onFocusPerso: () -> Unit,
     modifier: Modifier = Modifier
 ){
-    //per evitare che l'errore venga mostrato prima ancora che iniziamo a digitare qualcosa
+    //Gestione del focus: se non l'utente non ha interagito con il componente
+    //evitiamo di mostrare l'errore
     var giaFocalizzato by remember { mutableStateOf(false) }
     var expanded by remember {mutableStateOf(false)}
     val focusManager = LocalFocusManager.current
@@ -139,11 +134,11 @@ fun MenuSiNo(
             shape =RoundedCornerShape(12.dp)
         )
 
-        //sovrappongo un box vuoto per evitare che si apra la tastiera, quando provo
-        // a cliccare l'input testo clicco il box e apro il menu
+        //sovrappongo un box vuoto per catturare il tocco sull'area del TextField, evitando l'apertura della tastiera e
+        // e forzando l'apertura del menu a tendina
         Box(
             modifier = Modifier.matchParentSize().clickable{
-                focusManager.clearFocus() //chiudo la tastiera se aperta
+                focusManager.clearFocus()
                 expanded = true}
         )
 

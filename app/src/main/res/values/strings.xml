@@ -2,10 +2,10 @@
     <string name="app_name">Melanoma TNM</string>
     <string name="benvenuto">Welcome, doctor</string>
     <string name="btn_calcolaHome">Calculate new staging</string>
-    <string name="label_breslow">Breslow (mm)</string>
-    <string name="label_ulcerazione">Ulceration</string>
-    <string name="label_linfonodi">Lymph nodes</string>
-    <string name="label_metastasi">Metastasis</string>
+    <string name="label_breslow">Breslow index (mm)</string>
+    <string name="label_ulcerazione">Presence of ulceration</string>
+    <string name="label_linfonodi">Number of positive lymph nodes</string>
+    <string name="label_metastasi">Presence of metastasis</string>
     <string name="btn_calcolaStadio">Calculate stage</string>
     <string name="italiano" >Italian</string>
     <string name="inglese">English</string>

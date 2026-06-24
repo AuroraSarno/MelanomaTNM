@@ -12,28 +12,22 @@ import com.example.melanomatnm.modello.StadioFinale
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-
-
 class MelanomaViewModel: ViewModel() {
-    //variabile che viewmodel usa per salvare input nella view, salvato nella data class statoview
+    //variabile che viewmodel usa per salvare input nella view
     private val statoView = MutableStateFlow(StatoView())
-    //la view legge da questa variabile per potersi aggiornare
+    //stato permette alla view di leggere i dati che dovrà usare per aggiornarsi costantemente
     val stato = statoView.asStateFlow()
 
-    //funzioni per le modifiche dei valori, la UI dovrà chiamarle per modificare i valori dello stato
+    //funzioni per la gestione di eventi interni alla UI
     fun aggiornaUlcerazioni(nuovoValore:Boolean?){
-        //usiamo .copy per copiare l'intero StatoView e modificare solo ulcerazioni,
-        // compose vedrà un nuovo oggetto e riscriverà la UI immediatamente con i nuovi dati
-        //usiamo it perchè la funzione lamba ha un solo parametro, questa lamba la passiamo poi a
-        // update una funzione del viewModel che modifica l'ultimo stato presente in memoria della view
+       //aggiorna lo stato per mostrarlo sulla view, resetta anche l'errore per evitare di mostrarlo durante la scrittura dell'utente
         statoView.update {it.copy(ulcerazioni = nuovoValore, erroreUlcerazioni = null) }
-        //faccio update anche dell'errore per ulcerazioni e metastasi così che l'errore non sia visualizzato dopo aver scelto qualcosa
     }
     fun aggiornaBreslow(nuovoValore: String){ statoView.update {it.copy(breslow = nuovoValore)} }
     fun aggiornaLinfonodi(nuovoValore: String){ statoView.update {it.copy(linfonodi = nuovoValore)} }
     fun aggiornaMetastatsi(nuovoValore: Boolean?){ statoView.update {it.copy(metastasi = nuovoValore, erroreMetastasi = null) } }
 
-    //funzioni di aggiornamento per gli errori
+    //funzioni di aggiornamento per gli errori (validazione dell'input)
     fun aggiornaErrBreslow() {
         val statoAttualeView = statoView.value
         val testoBreslow = statoAttualeView.breslow
@@ -75,7 +69,7 @@ class MelanomaViewModel: ViewModel() {
         statoView.update { it.copy(erroreUlcerazioni = idErrore) }
     }
 
-    //funzione da eseguire quando utente clicca il bottone calcolastadio
+    //logica del calcolo
     fun calcolaStadioFinale(){
         //leggo lo stato attuale, a questo punto è stato aggiornato in base a cosa ha inserito l'utente
         //useremo statoAttualeView per leggere i dati del momento in cui utente ha cliccato sul bottone
@@ -91,7 +85,7 @@ class MelanomaViewModel: ViewModel() {
         val errLinfonodi = if(linfonodi==null || linfonodi <0) R.string.erroreLinfonodi else null
         val errUlcerazioni = if(ulcerazione==null) R.string.erroreOpzioni else null
         val errMetastasi = if(metastasi==null) R.string.erroreOpzioni else null
-        //aggiorno UI così vengono mostrati eventuali errori
+        //aggiornamento dell'UI così vengono mostrati eventuali errori trovati
         statoView.update { it.copy(erroreBreslow = errBreslow, erroreLinfonodi = errLinfonodi, erroreUlcerazioni = errUlcerazioni, erroreMetastasi = errMetastasi) }
         //eseguiamo i controlli per sapere se possiamo andare al calcolo
         if(breslow!=null && breslow >=0.0 && linfonodi!=null && linfonodi>= 0 && metastasi!=null && ulcerazione!=null){

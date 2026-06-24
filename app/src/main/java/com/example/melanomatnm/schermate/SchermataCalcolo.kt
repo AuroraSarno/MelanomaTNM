@@ -54,11 +54,9 @@ fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
     val statoUI by viewModel.stato.collectAsState()
     //variabile per togliere il focus dalla tastiera
     val focusManager = LocalFocusManager.current
-    //variabili per la traduzione String/Boolean
     val testoSi = stringResource(R.string.si)
     val testoNo = stringResource(R.string.no)
     val testoSeleziona = stringResource(R.string.seleziona)
-    //funzioni di traduzione
     fun booleanAString(valore: Boolean?):String{
         return when(valore) {
             true -> testoSi
@@ -69,7 +67,7 @@ fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
     fun stringABoolean(valore: String): Boolean{
         return valore == testoSi
     }
-    //variabili che chiedono ad android l'orientamento attuale del telefono
+    //variabili che chiedono ad android l'orientamento attuale del telefono, per gestire la view in base all'orientamento
     val configuration = LocalConfiguration.current
     val isPortrait = configuration.orientation == Configuration.ORIENTATION_PORTRAIT
     //do colore allo sfondo
@@ -77,8 +75,7 @@ fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
-            //statusBarsPadding sposta ogni oggetto creato sotto la barra di android (quella che mostra orologio...)
-            modifier = Modifier.fillMaxSize().statusBarsPadding().verticalScroll(statoSchermata)
+           modifier = Modifier.fillMaxSize().statusBarsPadding().verticalScroll(statoSchermata)
                 .pointerInput(Unit) {
                     detectTapGestures(onTap = { focusManager.clearFocus() })
                 },
@@ -98,7 +95,6 @@ fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
                     )
                 }
             }
-            //metto più o meno spazio in base all'orientamento del telefono
             if (isPortrait) {
                 Spazio(modifier = Modifier.height(70.dp))
             } else {
@@ -152,8 +148,7 @@ fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
                 onClick = {viewModel.calcolaStadioFinale()},
             )
         }
-        //faccio apparire la card dei risultati solo se lo stadiofinale è stato aggiornato
-        // (significa che è andato tutto bene)
+        //faccio apparire la card dei risultati solo se lo stadiofinale è stato aggiornato (significa che è andato tutto bene)
         if(statoUI.stadioFinale != null){
             Box(modifier = Modifier
                 .fillMaxSize()

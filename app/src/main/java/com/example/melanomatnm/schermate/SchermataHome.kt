@@ -41,13 +41,11 @@ fun SchermataHome(
     Box(modifier = Modifier.fillMaxSize()){
         Column(
             modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.Start //lo attacco a sinistra
+            horizontalAlignment = Alignment.Start
         ){
             Box(){
                 Surface(
-                    //grandezza della forma
                     modifier=Modifier.width(350.dp).height(100.dp),
-                    //arrotondo per bellezza i 2 angoli a destra (end)
                     shape =RoundedCornerShape (topEnd=16.dp, bottomEnd = 16.dp),
                     color= MaterialTheme.colorScheme.secondary
                 ){}
@@ -62,24 +60,20 @@ fun SchermataHome(
 
         }
         Column(
-            //align permette di tenere al centro questa colonna
             modifier = Modifier.align(Alignment.Center).verticalScroll(StatoSchermata),
             horizontalAlignment = Alignment.CenterHorizontally,
         ){
-            //bottone centrale
             Bottone(text=stringResource(R.string.btn_calcolaHome), onClick = NavigazioneACalcolatore, modifier=Modifier.width(270.dp))
-
         }
 
         Row(
-            //align attacca la riga alla fine dello schermo, in larghezza riempie tutto lo spazio e padding lo stacca dai bordi di 24 dp
             modifier= Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(24.dp),
-            horizontalArrangement = Arrangement.SpaceBetween //in questo modo le 2 icone sono sperata da uno spazio centrale e rimangono ai 2 angoli
+            horizontalArrangement = Arrangement.SpaceBetween
         ){
            MenuATendinaLingua()
 
             IconButton(
-                onClick = onThemeToggle, // Inverte la modalità al click, nella mainActiviy (così cambia ovunque)
+                onClick = onThemeToggle,
                 modifier = Modifier.background(MaterialTheme.colorScheme.primary, CircleShape)
             ) {
                Icon(
@@ -91,15 +85,3 @@ fun SchermataHome(
             }
         }
     }
-
-
-/*funzione per visualizzare la preview della schermata
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    // Chiamiamo la tua schermata passandole un'azione vuota {}
-    // visto che nel preview i bottoni non devono fare nulla di reale
-    MelanomaTNMTheme() {
-        SchermataHome(NavigazioneACalcolatore = {})
-    }
-}*/
