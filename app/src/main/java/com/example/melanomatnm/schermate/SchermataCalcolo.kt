@@ -147,6 +147,7 @@ fun SchermataCalcolo(tornaIndietro: () -> Unit, viewModel: MelanomaViewModel) {
                 text = stringResource(R.string.btn_calcolaStadio),
                 onClick = {viewModel.calcolaStadioFinale()},
             )
+            Spazio()
         }
         //faccio apparire la card dei risultati solo se lo stadiofinale è stato aggiornato (significa che è andato tutto bene)
         if(statoUI.stadioFinale != null){

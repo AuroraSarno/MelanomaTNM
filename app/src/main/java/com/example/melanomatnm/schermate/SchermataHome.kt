@@ -40,7 +40,7 @@ fun SchermataHome(
     Surface(modifier= Modifier.fillMaxSize()) {}
     Box(modifier = Modifier.fillMaxSize()){
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().statusBarsPadding(),
             horizontalAlignment = Alignment.Start
         ){
             Box(){
